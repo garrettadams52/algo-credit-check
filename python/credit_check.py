@@ -1,6 +1,28 @@
 def credit_check(str):
-    pass
+    lis = list(str)
+    ans = []
+    sum = 0
+    for j, i in enumerate(lis[::-1]):
+        num = int(i)
+        ele = 0
+        if j % 2 == 1:
+            ele = num*2
+        else:
+            ele = num
 
+        if ele >=10:
+            ele = ele%10 + (ele-(ele%10))//10
+            ans.append(ele)
+        else:
+            ans.append(ele)
+
+        sum = sum + ele
+    
+    #print(sum)
+    return "The number is valid!" if sum%10==0 else "The number is invalid!"
+
+str = '5541808923795240'
+print(credit_check(str))
 # Your Luhn Algorithm Here
 # Expected Output:
 # If it is valid, print "The number is valid!"
